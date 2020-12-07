@@ -1,0 +1,23 @@
+
+
+services:
+
+  host:
+    image: jmeter-docker:5.4
+    build:
+      context: .
+      dockerfile: Dockerfile.base
+    expose:
+      - "60000"
+    env_file:
+     - .env
+    command: ["/bin/bash"]
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    expose:
+     - "60000"
+     - "50000"
+     - "1099"
