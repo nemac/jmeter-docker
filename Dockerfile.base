@@ -11,12 +11,14 @@ RUN apt-get clean && \
 
 RUN mkdir /jmeter \
 	&& cd /jmeter \
-	&& wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-$JMETER_VERSION.tgz \
-	&& tar -xzf apache-jmeter-$JMETER_VERSION.tgz \
-	&& rm apache-jmeter-$JMETER_VERSION.tgz
+	&& wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.tgz \
+	&& tar -xzf apache-jmeter-5.4.tgz \
+	&& rm apache-jmeter-5.4.tgz
 
-#ADD jmeter-plugins/lib /jmeter/apache-jmeter-$JMETER_VERSION/lib
+ENV JMETER_HOME /jmeter/apache-jmeter-5.4
 
-ENV JMETER_HOME /jmeter/apache-jmeter-$JMETER_VERSION/
+ADD rmi_keystore.jks $JMETER_HOME/bin/rmi_keystore.jks
 
 ENV PATH $JMETER_HOME/bin:$PATH
+
+WORKDIR $JMETER_HOME/bin/

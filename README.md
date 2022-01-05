@@ -12,6 +12,12 @@
 
 - Export the test plan
 
+- [Create a Remote Method Invocation keystore](https://jmeter.apache.org/usermanual/remote-test.html#setup_ssl) and place it in this directory (name it `rmi_keystore.jks`)
+
+- `docker-compose build`
+
+## Run it
+
 - `docker-compose up`
 
 ### References
